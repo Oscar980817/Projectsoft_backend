@@ -58,7 +58,7 @@ exports.getPhotosByCiv = (req, res) => __awaiter(void 0, void 0, void 0, functio
             const report = reports.find(r => r.activities.includes(activity._id));
             return {
                 _id: activity._id,
-                date: (report === null || report === void 0 ? void 0 : report.createdAt) || new Date(), // Fallback to current date if no report
+                date: (report === null || report === void 0 ? void 0 : report.createdAt) || new Date(),
                 fotografia: activity.fotografia,
                 civ: activity.civ
             };

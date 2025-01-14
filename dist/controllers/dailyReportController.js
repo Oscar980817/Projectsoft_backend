@@ -167,7 +167,7 @@ exports.approveReport = (req, res) => __awaiter(void 0, void 0, void 0, function
         try {
             const notification = new Notification({
                 estado: 'Aprobado',
-                usuario: report.createdBy._id, // Use _id from populated createdBy
+                usuario: report.createdBy._id,
                 mensaje: `El informe del ${new Date(report.date).toLocaleDateString()} ha sido aprobado`
             });
             yield notification.save();
@@ -238,7 +238,7 @@ exports.rejectReport = (req, res) => __awaiter(void 0, void 0, void 0, function*
         // Crear mensaje
         try {
             const message = new Message({
-                reportId: report._id, // Agregar reportId
+                reportId: report._id,
                 remitente: req.user._id,
                 destinatario: report.createdBy._id,
                 asunto: 'Informe Diario Rechazado',
@@ -365,7 +365,7 @@ exports.generateReportPDF = (req, res) => __awaiter(void 0, void 0, void 0, func
                             // Calculate remaining space
                             const imgHeight = 150; // Reduced height
                             doc.image(activity.fotografia, {
-                                fit: [300, imgHeight], // Reduced width
+                                fit: [300, imgHeight],
                                 align: 'center'
                             });
                         }

@@ -23,7 +23,7 @@ const storage = multer.diskStorage({
 });
 const upload = multer({ storage });
 exports.createActivity = [
-    upload.single('fotografia'), // Middleware de multer para manejar la carga de archivos
+    upload.single('fotografia'),
     (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         const { civ, ubi_inicial, ubi_final, item, actividad, largo, ancho, alto, descuento_largo, descuento_ancho, descuento_alto, observaciones } = req.body;
         const fotografia = req.file ? req.file.path : req.body.fotografia; // Manejar tanto archivo como string
@@ -32,7 +32,7 @@ exports.createActivity = [
             const total_descuento = descuento_largo * descuento_ancho * descuento_alto;
             const total_final = total - total_descuento;
             const newActivity = new DailyActivity({
-                civ: new mongoose.Types.ObjectId(civ), // Asegúrate de que civ es un ObjectId
+                civ: new mongoose.Types.ObjectId(civ),
                 ubi_inicial,
                 ubi_final,
                 item,
@@ -48,7 +48,7 @@ exports.createActivity = [
                 total_final,
                 fotografia,
                 observaciones,
-                createdBy: req.user._id, // Usar el ID del usuario autenticado
+                createdBy: req.user._id,
                 cargo: req.user.roles.map(role => role.nombre).join(', ') // Usar los roles del usuario autenticado
             });
             yield newActivity.save();

@@ -13,7 +13,7 @@ const dailyReportRoutes = require('./routes/dailyReport'); // Importar rutas de 
 const dashboardRoutes = require('./routes/dashboard'); // Importar rutas del dashboard
 const civRoutes = require('./routes/civ');
 const roleRoutes = require('./routes/role'); // Importar rutas de roles
-const permissionRoutes = require('./routes/permission'); // Importar rutas de permisos
+const permissionRoutes = require('./routes/Permission'); // Importar rutas de permisos
 const messageRoutes = require('./routes/message.js');
 const notificationRoutes = require('./routes/notification');
 const photoRoutes = require('./routes/photo');
@@ -58,8 +58,6 @@ app.use((req, res, next) => {
 });
 
 mongoose.connect(process.env.DB_CONNECTION, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
   serverSelectionTimeoutMS: 30000,
   socketTimeoutMS: 45000
 })
