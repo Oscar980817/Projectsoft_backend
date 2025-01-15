@@ -13,7 +13,7 @@ const dailyReportRoutes = require('./routes/dailyReport'); // Importar rutas de 
 const dashboardRoutes = require('./routes/dashboard'); // Importar rutas del dashboard
 const civRoutes = require('./routes/civ');
 const roleRoutes = require('./routes/role'); // Importar rutas de roles
-const permissionRoutes = require('./routes/Permission'); // Importar rutas de permisos
+const permissionRoutes = require('./routes/permission'); // Importar rutas de permisos
 const messageRoutes = require('./routes/message.js');
 const notificationRoutes = require('./routes/notification');
 const photoRoutes = require('./routes/photo');
@@ -23,7 +23,7 @@ const app = express();
 
 // Configurar CORS para permitir solicitudes desde el frontend
 const corsOptions = {
-  origin: process.env.FRONTEND_URL || 'https://projectsoft-132e0.web.app/',
+  origin: process.env.FRONTEND_URL || 'https://projectsoft-132e0.web.app',
   methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE', 'OPTIONS'],
   credentials: true,
   allowedHeaders: [
@@ -41,13 +41,12 @@ const corsOptions = {
 
 app.use(cors(corsOptions));
 
-// Remove duplicate CORS middleware
 app.use(bodyParser.json({limit: '50mb'}));
 app.use(express.json({limit: '50mb'}));
 app.use(express.urlencoded({limit: '50mb', extended: true}));
 
 app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', 'http://localhost:3001');
+  res.header('Access-Control-Allow-Origin', process.env.FRONTEND_URL || 'https://projectsoft-132e0.web.app');
   res.header('Access-Control-Allow-Credentials', 'true');
   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
   res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
