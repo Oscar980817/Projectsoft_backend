@@ -23,7 +23,7 @@ const app = express();
 
 // Configurar CORS para permitir solicitudes desde el frontend
 const corsOptions = {
-  origin: process.env.FRONTEND_URL || 'http://localhost:3001',
+  origin: process.env.FRONTEND_URL || 'https://projectsoft-132e0.web.app/',
   methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE', 'OPTIONS'],
   credentials: true,
   allowedHeaders: [
