@@ -15,7 +15,7 @@ const swaggerOptions = {
     },
     servers: [
       {
-        url: 'http://localhost:3000',
+        url: 'https://projectsoft.onrender.com',
         description: 'Local server'
       }
     ]
